@@ -1,5 +1,6 @@
-<app-header></app-header>
+<app-header></app-header> <!-- Include the app-header component -->
 
+<!-- Form for creating a new war -->
 <div class="form-container">
   <form class="create-form" [formGroup]="warForm" (ngSubmit)="create()">
     <input type="text" name="warName" id="warName" placeholder="War Name" formControlName="warName">
@@ -15,13 +16,16 @@
 </div>
 
 <div>
-  <hr class="hrtopnav"> 
+  <hr class="hrtopnav"> <!-- Horizontal line -->
 </div>
 
+<!-- Container for displaying the list of wars -->
 <div class="div-center-content">
   <div class="war-list-container">
+    <!-- Check if there are wars in the list -->
     <div *ngIf="warList.length > 0">
       <h2 class="warList">List of Wars</h2>
+      <!-- Table to display war information -->
       <table class="war-table">
         <thead>
           <tr>
@@ -32,14 +36,19 @@
           </tr>
         </thead>
         <tbody>
+          <!-- Loop through each war in the warList -->
           <tr *ngFor="let war of warList">
+            <!-- Display war information if not in editing mode or not the war being edited -->
             <td *ngIf="!isEditing || editedWar?.warId !== war.warId" class="name">{{ war?.warName }}</td>
             <td *ngIf="!isEditing || editedWar?.warId !== war.warId" class="deathCount">{{ war?.deathCount }}</td>
             <td *ngIf="!isEditing || editedWar?.warId !== war.warId" class="location">{{ war?.location }}</td>
             <td *ngIf="!isEditing || editedWar?.warId !== war.warId" class="actions">
+              <!-- Button to delete the war -->
               <button type="button" class="btn-delete" (click)="deleteWar(war.warId)">Delete</button>
+              <!-- Button to edit the war -->
               <button type="button" class="btn-edit" (click)="editWar(war)">Edit</button>
             </td>
+            <!-- Display edit form if in editing mode and the war being edited -->
             <td *ngIf="isEditing && editedWar?.warId === war.warId" colspan="4">
               <form [formGroup]="editForm" (ngSubmit)="updateWar()">
                 <input type="text" formControlName="warName" placeholder="War Name">

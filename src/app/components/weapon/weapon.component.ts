@@ -8,25 +8,30 @@ import { GenericService } from 'src/app/services/generic.service';
   styleUrls: ['./weapon.component.css']
 })
 export class WeaponComponent {
-weaponList: Weapon [] =[];
+  weaponList: Weapon[] = [];
 
-ngOnInit(): void{
-  
-  this.getAll();
+  constructor(private service: GenericService<Weapon>) { }
 
-}
+  ngOnInit(): void {
+    this.getAll();
+  }
 
-constructor(private service: GenericService<Weapon>) {
-   
-}
+  getAll(): void {
+    this.service.getAll('Weapon').subscribe(data => {
+      this.weaponList = data.map(Weapon => ({
+        ...Weapon,
+        img: this.getImageUrlForWeapon(Weapon.weaponName)
+      }));
+      console.log(data);
+      console.log(this.weaponList);
+    });
+  }
 
-getAll(): void{
-this.service.getAll('Weapon').subscribe(data => {
-    this.weaponList= data;
-    console.log(data)
-    console.log(this.weaponList); }//end getAll
+  getImageUrlForWeapon(weaponName: string): string {
+    const img = `assets/img/${weaponName.replace(/\s+/g, '').toLowerCase()}.jpg`;
+    console.log(`Image URL for ${weaponName}: ${img}`);
+    return img;
+  }
 
 
-
-)};
 }

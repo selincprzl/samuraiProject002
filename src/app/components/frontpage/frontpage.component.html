@@ -1,15 +1,14 @@
-<app-header></app-header>
+<app-header></app-header> <!-- Include the app-header component -->
 
-
-<div class="card-menu"> 
-  <div *ngFor="let item of imageUrls  ">
+<div class="card-menu">
+  <!-- Loop through each item in the imageUrls array, it will do the same thing  -->
+  <div *ngFor="let item of imageUrls">
+    <!-- Card to display image and name, navigate to page on click -->
     <div class="card" (click)="navigateToPage(item.name)">
-        <img src="../../assets/img/{{item.img}}.jpg" alt="{{item.img}}">
-        <h2>{{item.name}}</h2>
+      <!-- Display the image from assets folder -->
+      <img src="../../assets/img/{{item.img}}.jpg" alt="{{item.img}}">
+      <!-- Display the name of the item -->
+      <h2>{{item.name}}</h2>
     </div>
   </div>
-
 </div>
-
-
-

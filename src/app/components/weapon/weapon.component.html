@@ -1,1 +1,15 @@
-<button (click)="getAll()">Weapon </button>
+<app-header></app-header>
+<div class="image-container">
+  <!-- <img src="assets/img/horse.jpg" alt="Image of a horse"> -->
+</div>
+<div class="container">
+  <div class="card-container">
+    <div class="card" *ngFor="let weapon of weaponList">
+      <img [src]="weapon.img" alt="Image of {{ weapon.weaponName }}" class="horse-image">
+      <h2>{{ weapon.weaponName }}</h2>
+      <div class="card-body">
+        <!-- Additional content can go here -->
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,16 +1,33 @@
-<app-header></app-header>
-<div class="page-container">
+<app-header></app-header> <!-- Include the app-header component -->
+
+<!-- Creating cards -->
+<div class="page-container" [ngClass]="{ 'blur': selectedClan }">
   <div class="content-container">
     <div class="card-menu">
-      <div *ngFor="let clan of clanImages" class="card">
+      <!-- Loop through each clan in clanImages array -->
+      <div *ngFor="let clan of clanImages" class="card" (click)="selectClan(clan)">
         <div class="card-img">
+          <!-- Display clan image -->
           <img [src]="'../../assets/img/' + clan.img + '.jpg'" alt="{{ clan.clanName }}">
         </div>
         <div class="card-info">
+          <!-- Display clan name -->
           <h2>{{ clan.clanName }}</h2>
-          <h2>hi</h2>
         </div>
       </div>
     </div>
+  </div>
+</div>
+
+<!-- Display clan description when a clan is selected -->
+<div *ngIf="selectedClan" class="description-card">
+  <div class="description-header">
+    <!-- Display selected clan's name and close button -->
+    <h2>{{ selectedClan.clanName }}</h2>
+    <button (click)="closeDescription()" class="close-btn">&times;</button>
+  </div>
+  <div class="description-content">
+    <!-- Display selected clan's description -->
+    <p>{{ selectedClan.description }}</p>
   </div>
 </div>

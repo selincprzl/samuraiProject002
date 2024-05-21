@@ -9,24 +9,24 @@ import { Router } from '@angular/router';
   styleUrls: ['./frontpage.component.css']
 })
 export class FrontpageComponent implements OnInit {
+  // Array to store the image URLs for the front page
   imageUrls: SamuraiImages[] = [];
-  
 
-  constructor(private service: GenericService<SamuraiImages>, private router: Router) {
+  constructor(private service: GenericService<SamuraiImages>, private router: Router) {}
 
-  }
-  
   ngOnInit(): void {
+    // Fetch image URLs when the component initializes
     this.getImageUrls();
   }
 
+  // Method to fetch image URLs for the front page
   getImageUrls(): void {
     this.service.getAll('frontpage').subscribe(data => {
       this.imageUrls = data;
     });
   }
 
-  
+  // Method to navigate to a specific page
   navigateToPage(page: string): void {
     this.router.navigate(['/' + page]);
   }
