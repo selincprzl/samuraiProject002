@@ -1,15 +1,20 @@
-<app-header></app-header>
+<app-header></app-header> <!-- Include app-header component -->
+
+<!-- Container for images -->
 <div class="image-container">
-  <!-- <img src="assets/img/horse.jpg" alt="Image of a horse"> -->
 </div>
+
+<!-- Main content container -->
 <div class="container">
+  <!-- Container for cards -->
   <div class="card-container">
+    <!-- Loop through weaponList and create a card for each weapon -->
     <div class="card" *ngFor="let weapon of weaponList">
+      <!-- Display weapon image -->
       <img [src]="weapon.img" alt="Image of {{ weapon.weaponName }}" class="horse-image">
+      <!-- Display weapon name -->
       <h2>{{ weapon.weaponName }}</h2>
-      <div class="card-body">
-        <!-- Additional content can go here -->
-      </div>
+   
     </div>
   </div>
 </div>

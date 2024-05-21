@@ -19,7 +19,8 @@ export class FrontpageComponent implements OnInit {
     this.getImageUrls();
   }
 
-  // Method to fetch image URLs for the front page
+  //makes the HTTP request to fatch image urls from the backend and 
+  //updates the imageUrls property  with the received data.
   getImageUrls(): void {
     this.service.getAll('frontpage').subscribe(data => {
       this.imageUrls = data;
