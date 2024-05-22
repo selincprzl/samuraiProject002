@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./frontpage.component.css']
 })
 export class FrontpageComponent implements OnInit {
-  // Array to store the image URLs for the front page
+  // Array to store the image URLs for the front page, [] allows you to store multiple images.
   imageUrls: SamuraiImages[] = [];
 
   constructor(private service: GenericService<SamuraiImages>, private router: Router) {}
@@ -19,8 +19,8 @@ export class FrontpageComponent implements OnInit {
     this.getImageUrls();
   }
 
-  //makes the HTTP request to fatch image urls from the backend and 
-  //updates the imageUrls property  with the received data.
+  //makes the HTTP request and 
+  //updates the prop. with new data
   getImageUrls(): void {
     this.service.getAll('frontpage').subscribe(data => {
       this.imageUrls = data;
