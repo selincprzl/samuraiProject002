@@ -1,0 +1,34 @@
+<app-header></app-header> <!-- Include app-header component -->
+
+<!-- Search input -->
+<div class="search-container">
+  <input type="text" [(ngModel)]="searchTerm" placeholder="Search by name" (input)="applySearchFilter()">
+</div>
+
+<!-- Display samurais -->
+<div class="card-container">
+  <!-- Loop through filtered samurais -->
+  <div class="card" *ngFor="let samurai of filteredSamuraiList">
+    <h2>{{ samurai.samuraiName }}</h2> <!-- Display samurai name -->
+    <p>Age: {{ samurai.age }}</p> <!-- Display samurai age -->
+    <p>Description: {{ samurai.description }}</p> <!-- Display samurai description -->
+
+    <!-- Display weapons -->
+    <p>Weapon:</p>
+    <ul>
+      <li *ngFor="let weapon of samurai.weapon">{{ weapon.weaponName }}</li> <!-- Display weapon name -->
+    </ul>
+
+    <!-- Display armours -->
+    <p>Armour:</p>
+    <ul>
+      <li *ngFor="let armour of samurai.armour">{{ armour.armourName }}</li> <!-- Display armour name -->
+    </ul>
+
+    <!-- Display horses -->
+    <p>Horse:</p>
+    <ul>
+      <li *ngFor="let horse of samurai.horse">{{ horse.horseName }}</li> <!-- Display horse name -->
+    </ul>
+  </div>
+</div>

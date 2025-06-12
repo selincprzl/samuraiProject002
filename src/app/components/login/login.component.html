@@ -1,0 +1,25 @@
+<div class="login-container">
+    <h2>ADMIN</h2>
+    <!-- Form for admin login -->
+    <!--calls the login method when its submitted.-->
+    <form (ngSubmit)="login()" #loginForm="ngForm" class="login-form">
+        <!-- Email input field -->
+        <div class="form-group">
+            <label for="email"></label>
+            <input type="email" id="email" name="email" [(ngModel)]="email" required placeholder="Email" 
+            [ngClass]="{ 'invalid': loginForm.submitted && loginForm.controls['email'].invalid }">
+        </div>
+        <!-- Password input field -->
+        <div class="form-group">
+            <label for="password"></label>
+            <input type="password" id="password" name="password" [(ngModel)]="password" required placeholder="Password"
+            [ngClass]="{ 'invalid': loginForm.submitted && loginForm.controls['password'].invalid }">
+        </div>
+        <!-- Login button -->
+        <div class="form-group">
+            <button type="submit">Login</button>
+        </div>
+        <!-- Display error message if login fails -->
+        <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+    </form>
+</div>

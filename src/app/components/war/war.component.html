@@ -1,0 +1,29 @@
+<app-header></app-header> <!-- Include app-header component -->
+
+<!-- Page container -->
+<div class="page-container">
+  <div class="content-container">
+    <!-- White box for content -->
+    <div class="white-box">
+      <h2>War List</h2> <!-- Heading for war list -->
+
+      <!-- Unordered list for war list -->
+      <ul class="war-list">
+        <!-- Header row with column names -->
+        <li class="header-row">
+          <b><span class="name">Name</span></b> <!-- War name column -->
+          <b><span class="deathcount">DEATH COUNT</span></b> <!-- Death count column -->
+          <b><span class="location">LOCATION</span></b> <!-- Location column -->
+        </li>
+
+        <!-- Loop through wars -->
+        <li *ngFor="let war of wars">
+          <!-- Display war details -->
+          <span>{{ war.warName }}</span> <!-- Display war name -->
+          <span>{{ war.deathCount }}</span> <!-- Display death count -->
+          <span>{{ war.location }}</span> <!-- Display location -->
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<app-header></app-header> <!-- Include the app-header component -->
+
+<div class="image-container">
+</div>
+
+<div class="container">
+  <div class="card-container">
+    <!-- Loop through each horse in the horseList array -->
+    <div class="card" *ngFor="let horse of horseList">
+      <!-- Display the horse's image -->
+      <img [src]="horse.imageUrl" alt="Image of {{ horse.horseName }}" class="horse-image">
+      <!-- Display the horse's name -->
+      <h2>{{ horse.horseName }}</h2>
+      <!-- Display the horse's description -->
+      <p>{{ horse.horseDescription }}</p>
+    </div>
+  </div>
+</div>
